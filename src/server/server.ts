@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
 import * as morgan from 'morgan';
+import * as favicon from 'serve-favicon';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { AppServerModule } from './app.server.module';
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(cookieParser());
 app.use(compression());
 app.use(morgan(build));
+app.use(favicon(`dist/${build}/assets/favicon.ico`));
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModule
 }));

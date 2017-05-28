@@ -2,6 +2,7 @@ import './server.imports';
 import * as express from 'express';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
+import * as favicon from 'serve-favicon';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { enableProdMode } from '@angular/core';
 import { AppServerModuleNgFactory } from './app.server.module.ngfactory';
@@ -13,6 +14,7 @@ const port = 5556;
 const app = express();
 app.use(cookieParser());
 app.use(compression());
+app.use(favicon(`dist/${build}/assets/favicon.ico`));
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory
 }));
