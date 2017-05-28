@@ -1,5 +1,6 @@
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { PlatformService } from './platform.service';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { set, get, remove, CookieAttributes } from 'js-cookie';
 
 export interface ICookieService {
@@ -11,13 +12,11 @@ export interface ICookieService {
 
 @Injectable()
 export class CookieService implements ICookieService {
-  constructor(private platformService: PlatformService) {}
+  constructor(private platformService: PlatformService, private injector: Injector) {}
 
   public set(name: string, value: any, options?: CookieAttributes): void {
     if (this.platformService.isBrowser) {
       set(name, value, options);
-    } else {
-      // TODO: server side cookie handling
     }
   }
 
@@ -33,7 +32,8 @@ export class CookieService implements ICookieService {
     if (this.platformService.isBrowser) {
       return get(name);
     } else {
-      // TODO: server side cookie handling
+      const req = this.injector.get(REQUEST);
+      if (req) return req.cookies[name];
     }
   }
 
@@ -41,7 +41,8 @@ export class CookieService implements ICookieService {
     if (this.platformService.isBrowser) {
       return get();
     } else {
-      // TODO: server side cookie handling
+      const req = this.injector.get(REQUEST);
+      if (req) return req.cookies;
     }
   }
 }

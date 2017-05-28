@@ -1,5 +1,7 @@
+import { Injector } from '@angular/core';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { CookieService } from './shared/services/cookie.service';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Config } from './shared/config/env.config';
 import './operators';
 
@@ -13,8 +15,4 @@ import './operators';
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
-  constructor(cookieSer: CookieService) {
-    cookieSer.set('asd', {thing:1});
-    console.log(cookieSer.get('asd'));
-  }
 }

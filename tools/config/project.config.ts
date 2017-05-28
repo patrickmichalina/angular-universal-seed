@@ -48,6 +48,12 @@ export class ProjectConfig extends SeedConfig {
     let additionalPackages: ExtendPackages[] = [{
       name: 'js-cookie',
       path: 'node_modules/js-cookie/src/js.cookie.js'
+    }, {
+      name: '@nguniversal/express-engine',
+      path: 'node_modules/@nguniversal/express-engine',
+      packageMeta: {
+        defaultExtension: 'js'
+      }
     }];
 
     this.addPackagesBundles(additionalPackages);
