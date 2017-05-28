@@ -1,3 +1,4 @@
+import { CookieService } from './shared/services/cookie.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
@@ -20,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule.forRoot()
   ],
   providers: [
+    CookieService,
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'

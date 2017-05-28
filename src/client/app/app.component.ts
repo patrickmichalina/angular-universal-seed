@@ -1,3 +1,4 @@
+import { CookieService } from './shared/services/cookie.service';
 import { Component } from '@angular/core';
 import { Config } from './shared/config/env.config';
 import './operators';
@@ -11,4 +12,9 @@ import './operators';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
 })
-export class AppComponent { }
+export class AppComponent {
+  constructor(cookieSer: CookieService) {
+    cookieSer.set('asd', {thing:1});
+    console.log(cookieSer.get('asd'));
+  }
+}
