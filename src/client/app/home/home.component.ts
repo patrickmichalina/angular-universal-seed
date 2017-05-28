@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'sd-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
 
