@@ -2,9 +2,11 @@ import * as express from 'express';
 import * as fallback from 'express-history-api-fallback';
 import * as openResource from 'open';
 import { resolve } from 'path';
+import * as browserSync from 'browser-sync';
 
 import * as codeChangeTool from './code_change_tools';
 import Config from '../../config';
+const nodemon = require('gulp-nodemon');
 
 /**
  * Serves the Single Page Application. More specifically, calls the `listen` method, which itself launches BrowserSync.
@@ -18,7 +20,7 @@ export function serveSPA() {
  * which itself initiates a BrowserSync reload.
  * @param {any} e - The file that has changed.
  */
-export function notifyLiveReload(e:any) {
+export function notifyLiveReload(e: any) {
   let fileName = e.path;
   codeChangeTool.changed(fileName);
 }
@@ -37,6 +39,53 @@ export function serveDocs() {
   server.listen(Config.DOCS_PORT, () =>
     openResource('http://localhost:' + Config.DOCS_PORT + Config.APP_BASE)
   );
+}
+
+/**
+ * Start Universal server code
+ */
+export function serveUniversal() {
+  const stream = nodemon({
+    script: 'dist/dev/server/server.js',
+    watch: 'src',
+    ext: 'html ts scss css json',
+    tasks: ['build.dev.server']
+  });
+
+  stream
+    .on('start', function () {
+      //TODO: browserSync.init(Config.getPluginConfig('browser-sync-universal'));
+    })
+    .on('restart', function () {
+      console.log('restarted!');
+    })
+    .on('crash', function () {
+      console.error('Application has crashed!\n');
+      stream.emit('restart', 10); // restart the server in 10 seconds
+    });
+  return stream;
+}
+
+/**
+ * Start Universal server code
+ */
+export function serveUniversalProd() {
+  const stream = nodemon({
+    script: 'dist/prod/server/server-prod.js'
+  });
+
+  stream
+    .on('start', function () {
+      //TODO: browserSync.init(Config.getPluginConfig('browser-sync-universal'));
+    })
+    .on('restart', function () {
+      console.log('restarted!');
+    })
+    .on('crash', function () {
+      console.error('Application has crashed!\n');
+      stream.emit('restart', 10); // restart the server in 10 seconds
+    });
+  return stream;
 }
 
 /**

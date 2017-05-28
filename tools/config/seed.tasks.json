@@ -129,5 +129,25 @@
   "test": [
     "build.test",
     "karma.run"
+  ],
+  "build.dev.server": [
+    "build.dev",
+    "build.js.dev.server"
+  ],
+  "serve.dev.server": [
+    "build.dev.server",
+    "server.universal.start"
+  ],
+  "serve.prod.server": [
+    "build.prod.server.aot",
+    "server.universal.start.prod"
+  ],
+  "build.prod.server.aot": [
+    "build.prod.rollup.aot",
+    "copy.prod.server.app",
+    "copy.prod.server",
+    "compile.ahead.prod.server",
+    "build.js.prod.aot.server",
+    "copy.prod.server.dist"
   ]
 }

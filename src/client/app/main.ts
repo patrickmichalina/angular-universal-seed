@@ -9,7 +9,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // import { TranslationProviders } from './i18n.providers';
 
 // The app module
-import { AppModule } from './app.module';
+import { AppBrowserModule } from './app.browser.module';
 
 if (String('<%= BUILD_TYPE %>') === 'prod') { enableProdMode(); }
 
@@ -17,7 +17,7 @@ if (String('<%= BUILD_TYPE %>') === 'prod') { enableProdMode(); }
 // let TP = new TranslationProviders();
 // TP.getTranslationFile().then((providers: any) => {
   // const options: any = { providers };
-  platformBrowserDynamic().bootstrapModule(AppModule/*, options*/);
+  platformBrowserDynamic().bootstrapModule(AppBrowserModule/*, options*/);
 // });
 
 // In order to start the Service Worker located at "/worker-basic.[min.]js"

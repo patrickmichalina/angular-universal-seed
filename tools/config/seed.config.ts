@@ -136,9 +136,16 @@ export class SeedConfig {
 
   BOOTSTRAP_PROD_MODULE = `${this.BOOTSTRAP_DIR}/` + 'main';
 
+  BOOTSTRAP_UNIVERSAL_PROD_MODULE = `server/` + 'server';
+
   NG_FACTORY_FILE = 'main-prod';
 
+  NG_UNIVERSAL_FACTORY_FILE = 'server-prod';
+
   BOOTSTRAP_FACTORY_PROD_MODULE = `${this.BOOTSTRAP_DIR}/${this.NG_FACTORY_FILE}`;
+
+  BOOTSTRAP_UNIVERSAL_FACTORY_PROD_MODULE = `server/${this.NG_UNIVERSAL_FACTORY_FILE}`;
+
   /**
    * The default title of the application as used in the `<title>` tag of the
    * `index.html`.
@@ -293,6 +300,10 @@ export class SeedConfig {
    */
   JS_PROD_APP_BUNDLE = 'app.js';
 
+  CRAWLER_DIR = `web`;
+  SERVER_DEST = this.BUILD_TYPE === BUILD_TYPES.DEVELOPMENT ? `${this.DEV_DEST}/server` : `${this.PROD_DEST}/server`;
+  APP_SERVER = argv['server'] || 'server';
+  APP_SERVER_SRC = `src/${this.APP_SERVER}`;
   /**
    * The required NPM version to run the application.
    * @type {string}
