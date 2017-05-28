@@ -1,10 +1,10 @@
 import { BaseRequestOptions, ConnectionBackend, Http, Response, ResponseOptions } from '@angular/http';
 import { TestBed, async } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
-
 import { Observable } from 'rxjs/Observable';
-
 import { NameListService } from './name-list.service';
+import { TransferHttp } from '../../modules/transfer-http/transfer-http';
+import { TransferState } from '../../modules/transfer-state/transfer-state';
 
 export function main() {
   describe('NameList Service', () => {
@@ -15,6 +15,8 @@ export function main() {
 
       TestBed.configureTestingModule({
         providers: [
+          TransferHttp,
+          TransferState,
           NameListService,
           MockBackend,
           BaseRequestOptions,
