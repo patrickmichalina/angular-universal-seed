@@ -7,7 +7,7 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import { AppServerModule } from './app.server.module';
 
 const build = 'dev';
-const port = 8000;
+const port = 5556;
 const app = express();
 app.use(cookieParser());
 app.use(compression());
@@ -27,6 +27,6 @@ app.get('/*', (req, res) => {
     res,
   });
 });
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log(`Angular Universal Server listening on port ${port}...`);
 });

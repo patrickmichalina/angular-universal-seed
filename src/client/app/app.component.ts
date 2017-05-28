@@ -11,8 +11,4 @@ import './operators';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
 })
-export class AppComponent {
-  constructor() {
-    console.log('Environment config', Config);
-  }
-}
+export class AppComponent { }

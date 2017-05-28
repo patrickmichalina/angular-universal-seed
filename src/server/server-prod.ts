@@ -9,7 +9,7 @@ import { AppServerModuleNgFactory } from './app.server.module.ngfactory';
 enableProdMode();
 
 const build = 'prod';
-const port = 8000;
+const port = 5556;
 const app = express();
 app.use(cookieParser());
 app.use(compression());
@@ -29,6 +29,6 @@ app.get('/*', (req, res) => {
     res
   });
 });
-app.listen(8000, () => {
+app.listen(port, () => {
   console.log(`Angular Universal Server listening on port ${port} ...`);
 });
