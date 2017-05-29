@@ -41,6 +41,7 @@ export class ProjectConfig extends SeedConfig {
 
     this.ROLLUP_NAMED_EXPORTS = [
       ...this.ROLLUP_NAMED_EXPORTS,
+      { 'node_modules/js-cookie/src/js.cookie.js': [ 'set', 'get', 'remove', 'CookieAttributes', 'getJSON' ] }
       //{'node_modules/immutable/dist/immutable.js': [ 'Map' ]},
     ];
 
