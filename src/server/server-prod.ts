@@ -10,7 +10,7 @@ import { AppServerModuleNgFactory } from './app.server.module.ngfactory';
 enableProdMode();
 
 const build = 'prod';
-const port = 5556;
+const port = process.env.PORT || 5556;
 const app = express();
 app.use(cookieParser());
 app.use(compression());

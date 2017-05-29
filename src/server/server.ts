@@ -8,7 +8,7 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import { AppServerModule } from './app.server.module';
 
 const build = 'dev';
-const port = 5556;
+const port = process.env.PORT || 5556;
 const app = express();
 app.use(cookieParser());
 app.use(compression());
